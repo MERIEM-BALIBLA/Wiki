@@ -12,10 +12,25 @@ class BaseModel {
         $this->db = Connexion::getInstance()->getConnection();
     }
 
+    public function getById($table, $id)
+    {
+        try {
+            $query = "SELECT * FROM $table WHERE id = :id";
+            $stmt = $this->db->prepare($query);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
+
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            // Handle the exception, log, or return false
+            echo "Error getting data by id: " . $e->getMessage();
+            return false;
+        }
+    }
+
     public function index($table, $columns)
     {
         try {
-            // Utilisez des précautions pour éviter les erreurs potentielles
             $query = "SELECT $columns FROM $table ORDER BY id DESC LIMIT 5";
             $stmt = $this->db->prepare($query);
             
@@ -49,7 +64,7 @@ class BaseModel {
         }
 
 
-    public function update($table, $data, $id)
+        protected function update($table, $data, $id)
         {
             try {
                 $update_arr = [];
@@ -68,6 +83,13 @@ class BaseModel {
             } catch (PDOException $e) {
                 echo "Error updating record: " . $e->getMessage();
             }
+        }
+
+
+        public function delete($id){
+            $statement = $this->db->prepare('DELETE FROM media WHERE id = :id');
+            $statement -> bindParam(":id",$id);
+            return $statement->execute();
         }
         
 

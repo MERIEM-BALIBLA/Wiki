@@ -3,6 +3,6 @@
     class StatisticsController {
      
         public function index(){
-            include 'app/view/Statistics.php';
+            include 'App/view/admin/Statistics.php';
         }
     }

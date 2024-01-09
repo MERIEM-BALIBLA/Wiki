@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\CategorieModel;
+use PDOException;
 
 class CategorieController
 {
@@ -42,7 +43,7 @@ class CategorieController
             }
 
             // Include the view file
-            include 'App/View/admin/categories/Insert.php';
+            include 'App/View/admin/categories/index.php';
         } else {
             // Render the form
             include 'App/View/admin/categories/Insert.php';
@@ -50,36 +51,30 @@ class CategorieController
     }
 
     public function update($id)
-    {
-        // Check if the form is submitted
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $table = array(
-                'name' => $_POST['categorie'],
-                'description' => $_POST['description'],
-            );
+{
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $table = 'categorie';
+        $data = array(
+            'name' => $_POST['categorie'],
+            'description' => $_POST['description'],
+        );
 
-            // Instantiate the model
-            $categorieModel = new CategorieModel();
+        $categorieModel = new CategorieModel();
 
-            // Update data in the database
-            $result = $categorieModel->update('categorie', $table, $id);
+        $result = $categorieModel->update($table, $data, $id);
 
-            if ($result) {
-                echo "Data updated successfully.";
-            } else {
-                echo "Failed to update data.";
-            }
-
-            // Include the view file or redirect as needed
-            include 'App/View/admin/categories/Update.php';
+        if ($result) {
+            echo "Record updated successfully!";
         } else {
-            // Fetch the category data for the specified id
-            $categorieModel = new CategorieModel();
-            $category = $categorieModel->getById('categorie', $id);
-
-            // Render the update form
-            include 'App/View/admin/categories/Update.php';
+            echo "Error updating record!";
         }
+    } else {
+        $categorieModel = new CategorieModel();
+        $category = $categorieModel->getById('categorie', $id);
+
+        include 'App/view/admin/categories/index.php';
     }
-    
+}
+
+
 }

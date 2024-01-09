@@ -28,11 +28,11 @@ class CategorieModel extends BaseModel
             }
         }
 
-    public function update($table, $data, $id)
+    public function update($table,$data,$id)
         {
-            $table = 'categorie';
+            // $table = 'categorie';
             try {
-                parent::update($table, $data, $id);
+                parent::update($table,$data,$id);
                 return true;
             } catch(PDOException $e) {
                 echo "Erreur lors de l'insertion : " . $e->getMessage();
@@ -40,5 +40,14 @@ class CategorieModel extends BaseModel
             }
         }
 
+    public function delete($id) {
+        try {
+            parent::delete($id);
+            return true;
+        }catch(PDOException $e){
+            echo "Erreur lors de l'insertion : " . $e->getMessage();
+            return false;
+        }
+    }
 }
 
