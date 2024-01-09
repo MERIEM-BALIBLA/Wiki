@@ -1,0 +1,83 @@
+@media (max-width: 992px) {
+    .navbar_box {
+        display: flex;
+        flex-direction: column;
+
+    }
+}
+
+a.nav-link {
+    color: black;
+}
+
+.tags {
+    text-align: center;
+}
+
+footer .top-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: rgb(249, 222, 240) ;
+    height: 16.4227rem;
+}
+
+.bootom-footer {
+    width: 100%;
+    height: 4.9261rem;
+    flex-shrink: 0;
+    background: rgb(233, 181, 220) ;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.bootom-footer img {
+    height: 1.3rem;
+}
+
+.bootom-footer span {
+    color: white;
+    font-size: 1rem;
+}
+
+.footer-links {
+    width: 40%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: black;
+    font-size: 1rem;
+}
+
+
+.navbar-brand img {
+    width: 1.5rem;
+}
+
+.navbar {
+    background-color:  #eee;
+}
+
+.navbar span {
+    color: #000;
+    font-family: Jockey One;
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+footer span {
+    color: #000;
+    font-family: Jockey One;
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+}
